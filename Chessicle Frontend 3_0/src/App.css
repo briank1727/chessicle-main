@@ -1,0 +1,306 @@
+/* #region General */
+
+* {
+  font-family: Geologica;
+}
+
+body {
+  margin: 0;
+  background-color: rgb(142, 202, 230);
+  padding-top: 70px;
+  display: flex;
+  place-items: center;
+  flex-direction: column;
+}
+
+button {
+  cursor: pointer;
+  background-color: rgb(142, 202, 230);
+  transition: background-color 0.15s;
+  border-radius: 15px;
+  border: none;
+}
+
+button:hover {
+  background-color: white;
+  transition: background-color 0.15s;
+}
+
+button:active {
+  background-color: rgb(142, 202, 230);
+  transition: background-color 0.15s;
+}
+
+.big-text {
+  font-size: 30px;
+  text-align: center;
+  color: white;
+}
+
+.small-text {
+  font-size: 16px;
+  text-align: center;
+  color: white;
+}
+
+p {
+  margin: 0;
+}
+
+.no-drag {
+  -webkit-user-drag: none;
+  /* user-drag: none; */
+}
+
+/* #endregion */
+
+/* #region Header */
+
+.header {
+  position: fixed;
+  background-color: rgb(2, 48, 71);
+  color: white;
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 70px;
+  font-size: 50px;
+  font-weight: 800;
+  border-bottom: 5px solid white;
+  z-index: 10000;
+}
+
+.header #logo-link {
+  font-size: 50px;
+  background-color: transparent;
+  border: none;
+  font-weight: 800;
+  color: rgb(142, 202, 230);
+  transition: color 0.15s;
+  margin-left: 100px;
+  text-decoration: none;
+}
+
+.header #tutorial-link,
+.header #how-to-play-chess-link {
+  font-size: 20px;
+  background-color: transparent;
+  border: none;
+  color: rgb(142, 202, 230);
+  transition: color 0.15s;
+  margin-right: 100px;
+  text-decoration: none;
+}
+
+.header #logo-link:hover,
+.header #tutorial-link:hover,
+.header #how-to-play-chess-link:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.header #logo-link:active,
+.header #tutorial-link:active,
+.header #how-to-play-chess-link:active {
+  color: white;
+}
+
+/* #endregion */
+
+/* #region Board */
+
+#board {
+  width: 800px;
+  height: 800px;
+  display: grid;
+  grid-template-columns: repeat(8, 100px);
+  grid-template-rows: repeat(8, 100px);
+  background-color: blue;
+  border: 10px solid black;
+}
+
+.light-square {
+  background-color: rgb(237, 205, 163);
+}
+
+.dark-square {
+  background-color: rgb(155, 85, 42);
+}
+
+.highlight-square {
+  background-color: rgb(255, 255, 0);
+}
+
+.square {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.square .chess-piece {
+  width: 100px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100px;
+  z-index: 10;
+}
+
+.square .white-piece:hover {
+  cursor: grab;
+}
+
+.square .white-piece:active {
+  cursor: grabbing;
+}
+
+.square img {
+  width: 80px;
+}
+
+.square .dot {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  opacity: 0.5;
+  background-color: black;
+}
+
+.square .circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 10px solid black;
+  opacity: 0.5;
+  position: absolute;
+}
+
+/* #endregion */
+
+/* #region Screens */
+
+.faded-background {
+  width: 800px;
+  height: 800px;
+  background-color: rgb(0, 0, 0, 0.5);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.faded-background #promotion-screen {
+  width: 320px;
+  height: 320px;
+  background-color: rgb(2, 48, 71);
+  border: 5px solid rgb(2, 48, 71);
+  border-radius: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 160px);
+  grid-template-rows: repeat(2, 160px);
+}
+
+.faded-background .board-screen {
+  width: 200px;
+  height: 250px;
+  border: 10px solid black;
+  display: flex;
+  background-color: rgb(2, 48, 71);
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-direction: column;
+  border-radius: 15px;
+}
+
+.faded-background #promotion-screen .promotion-button {
+  width: 140px;
+  height: 140px;
+  margin: auto;
+  background-size: 120px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.faded-background #game-over-screen #game-over-restart-button,
+.faded-background #puzzle-completed-screen #restart-button,
+.faded-background #puzzle-completed-screen #next-puzzle-button,
+.faded-background #tutorial-completed-screen #restart-button,
+.faded-background #tutorial-completed-screen #home-button {
+  height: 60px;
+  width: 120px;
+  font-size: 20px;
+}
+
+/* #endregion */
+
+/* #region Info Panel */
+
+#main-container {
+  margin-top: 50px;
+  display: flex;
+  gap: 20px;
+}
+
+#main-container #info-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgb(2, 48, 71);
+  align-items: center;
+  border-radius: 15px;
+  border: 5px solid black;
+  width: 250px;
+  gap: 30px;
+}
+
+#main-container #info-panel #restart-button {
+  width: 150px;
+  height: 80px;
+  margin-bottom: 100px;
+}
+
+/* #endregion */
+
+/* #region How to Play */
+
+.week-button {
+  width: 450px;
+  height: 150px;
+  font-size: 50px;
+}
+
+#how-to-play,
+.week {
+  margin-top: 50px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.external-link-button {
+  margin-top: 50px;
+  display: inline-block;
+  padding: 50px 100px;
+  background-color: rgb(142, 202, 230);
+  color: black;
+  border: none;
+  border-radius: 15px;
+  font-size: 50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s;
+  text-align: center;
+}
+
+.external-link-button:hover {
+  background-color: white;
+  transition: background-color 0.15s;
+}
+
+/* #endregion */
