@@ -66,7 +66,10 @@ export default function Home() {
       } else {
         setNoPuzzleTodayScreen(true);
       }
-    });
+    }).catch((error) => {
+      // setTodaysPuzzle()
+    }
+    );
   }, []);
   useEffect(() => setUpBoard(), [todaysPuzzle]);
   useEffect(() => setNumberOfMoves(puzzlesNumberOfMoves), [puzzlesNumberOfMoves]);
